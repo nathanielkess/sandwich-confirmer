@@ -7,3 +7,10 @@ export interface OnIncrement extends Action {
     isUp: Boolean,
   };
 }
+
+export interface OnDecrement extends Action {
+  type: CounterTypes.DECREMENT;
+  payload: {
+    isUp: Boolean,
+  };
+}
