@@ -4,7 +4,7 @@ import { OnIncrement } from '../../state/counter/counter.interfaces';
 import { OnDecrement } from '../../state/counter/counter.interfaces';
 
 export const Button: React.SFC<{
-  onPress: ActionCreator<OnIncrement | OnDecrement>,
+  onPress: ActionCreator<OnIncrement | OnDecrement | any>,
   value: string,
 }> = ({
   onPress,

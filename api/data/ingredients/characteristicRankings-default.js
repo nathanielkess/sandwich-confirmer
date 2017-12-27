@@ -42,3 +42,5 @@ const characteristicRankings = [
         ranking: 3
     }
 ];
+
+module.exports = characteristicRankings;

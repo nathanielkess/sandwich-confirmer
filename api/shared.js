@@ -1,15 +1,15 @@
 const fs = require('fs');
 
 // use observables instead?
-const getIngredients = () => {
+const getIngredientsJson = () => {
     return readSelectedFile('./data/ingredients/ingredients.json');
 };
 
-const getIngredientDetails = () => {
+const getIngredientDetailsJson = () => {
     return readSelectedFile('./data/ingredients/ingredientDetails.json');
 };
 
-const getCharacteristicRankings = () => {
+const getCharacteristicRankingsJson = () => {
     return readSelectedFile('./data/ingredients/characteristicRankings-default.json');
 }
 
@@ -22,7 +22,7 @@ function readSelectedFile(path) {
 };
 
 module.exports = {
-    getIngredients,
-    getIngredientDetails,
-    getCharacteristicRankings
+    getIngredientsJson,
+    getIngredientDetailsJson,
+    getCharacteristicRankingsJson
 };

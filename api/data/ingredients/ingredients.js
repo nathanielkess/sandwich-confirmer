@@ -160,3 +160,5 @@ const ingredients = [
         type: 'inclusions'
     }
 ];
+
+module.exports = ingredients;
