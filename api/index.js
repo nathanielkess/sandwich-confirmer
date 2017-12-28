@@ -1,13 +1,18 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
+const bodyParser = require('body-parser');
+
 const shared = require('./shared');
 const imperative = require('./imperative-calculator');
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
@@ -26,14 +31,20 @@ app.get('/rankings', (req, res) => {
      .then((result) => res.send(result));
 });
 
-app.get('/calculations', (req, res) => {
-    const someItems = [{
-        id: 1,
-    }, {
-        id: 32
-    }];
-    imperative.calculateRanking(someItems);
-    res.send('yep');
+// app.get('/calculations', (req, res) => {
+//     const pureSandwich = [1, 8, 10, 19, 26, 27];
+//     imperative.calculateRanking(pureSandwich)
+//      .then((result) => {
+//         res.json(result);
+//      })
+// });
+
+app.post('/sandwichgenerator', (req, res) => {
+    const contents = req.body;
+    imperative.calculateRanking(contents)
+     .then((result) => {
+        res.json(result);
+     })
 });
 
 
