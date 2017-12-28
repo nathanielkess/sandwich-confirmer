@@ -12,7 +12,6 @@ export const onDecrement = (isUp: boolean): OnDecrement => ({
   payload: { isUp }
 });
 
-
 type HandledActions = OnIncrement | OnDecrement;
 
 export const count = (state: number = 0, action: HandledActions): number => {

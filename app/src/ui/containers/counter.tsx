@@ -11,9 +11,19 @@ import { onIncrement } from './../../state/counter/count.reducer';
 //     </div>
 //   );
 // };
+const pureSandwich = [1, 8, 10, 19, 26, 27];
 
-const apiCall = () => fetch('http://localhost:4200/ingredients').then(response => response.json());
-
+const getIngredients = () => 
+  fetch('http://localhost:4200/ingredients').then(response => response.json());
+  
+const calculate = () => 
+  fetch('http://localhost:4200/sandwichgenerator', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(pureSandwich)
+  }).then(response => response.json());
 
 export const Counter = connect(
   null, 
@@ -23,6 +33,7 @@ export const Counter = connect(
 )(({ onUp }) => (
   <div>
     <Button onPress={onUp} value={'Go Up'} />
-    <Button onPress={apiCall} value={'Get Ingredients'} />
+    <Button onPress={getIngredients} value={'Get Ingredients'} />
+    <Button onPress={calculate} value={'Calculate'} />
   </div>
 ));
