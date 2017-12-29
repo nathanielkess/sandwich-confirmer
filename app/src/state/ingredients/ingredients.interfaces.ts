@@ -19,6 +19,10 @@ export interface OnIngredientSelect extends Action {
   }
 }
 
+export interface OnCheckSandwich extends Action {
+  type: IngredientsType.CHECK_IF_SANDWICH;
+}
+
 export interface Ingredient {
   id: number;
   name: string;

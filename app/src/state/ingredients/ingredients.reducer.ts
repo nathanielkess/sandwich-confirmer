@@ -1,5 +1,6 @@
+import { Dispatch } from 'redux';
 import { IngredientsType } from './ingredients.types';
-import { OnIngredientsRequest } from './ingredients.interfaces';
+import { OnIngredientsRequest, OnCheckSandwich } from './ingredients.interfaces';
 import { OnIngredientsReceipt } from './ingredients.interfaces';
 import { OnIngredientSelect } from './ingredients.interfaces';
 import { IngredientsStore } from './ingredients.interfaces';
@@ -7,6 +8,16 @@ import { Ingredient } from './ingredients.interfaces';
 
 const fetchIngredients = () => 
   fetch('http://localhost:4200/ingredients').then(response => response.json());
+
+// const pureSandwich = [1, 8, 10, 19, 26, 27]; 
+// const calculateSandwich = () => 
+//   fetch('http://localhost:4200/sandwichgenerator', {
+//     method: 'post',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(pureSandwich)
+//   }).then(response => response.json());
 
 export const onIngredientsRequest = (): OnIngredientsRequest => ({
   type: IngredientsType.GET_INGREDIENTS
@@ -22,10 +33,14 @@ export const onIngredientSelect = (ingredient: Ingredient): OnIngredientSelect =
     payload: { ingredient }
 });
 
-export const getIngredients = () => {
-  return (dispatch: any) => {
+export const onCheckIfSandwich = (): OnCheckSandwich => ({
+  type: IngredientsType.CHECK_IF_SANDWICH
+});
+
+export const getIngredients = (): (d: Dispatch<any>) => void => {
+  return (dispatch: Dispatch<any>) => {
     dispatch(onIngredientsRequest());
-    return fetchIngredients().then(
+    fetchIngredients().then(
       (results) => dispatch(onIngredientsReceipt(results))
     );
   };
@@ -38,7 +53,7 @@ const initialIngredientState: IngredientsStore = {
 
 type HandledActions = OnIngredientsReceipt | OnIngredientSelect;
 
-export const ingredientsReducer = (state = initialIngredientState, action: HandledActions): IngredientsStore => {
+export const sandwichMachine = (state = initialIngredientState, action: HandledActions): IngredientsStore => {
   switch (action.type) {
     case IngredientsType.SET_INGREDIENTS:
       return { 
