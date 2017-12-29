@@ -23,6 +23,13 @@ export interface OnCheckSandwich extends Action {
   type: IngredientsType.CHECK_IF_SANDWICH;
 }
 
+export interface OnSandwichResultReceipt extends Action {
+  type: IngredientsType.SET_SANDWICH_RESULT;
+  payload: { 
+    isSandwich: boolean 
+  };
+}
+
 export interface Ingredient {
   id: number;
   name: string;
@@ -31,5 +38,6 @@ export interface Ingredient {
 
 export interface IngredientsStore {
     ingredients: Ingredient[];
-    selectedIngredients: Ingredient[]
+    selectedIngredients: Ingredient[];
+    isSandwich: boolean;
 }
