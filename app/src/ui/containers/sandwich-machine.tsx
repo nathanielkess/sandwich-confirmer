@@ -5,14 +5,19 @@ import { getIngredients } from './../../state/ingredients/ingredients.reducer';
 import { onCheckIfSandwich } from './../../state/ingredients/ingredients.reducer';
 
 export const SandwichMachine = connect(
-  null, 
+  (state: any) => ({
+    ingredients : state.sandwichMachine.ingredients, 
+  }), 
   {
     requestIngredients: getIngredients,
     checkSandwich: onCheckIfSandwich
   },
-  )(({ requestIngredients, checkSandwich }) => (
+  )(({ requestIngredients, checkSandwich, ingredients }) => (
     <div>
       <Button onPress={requestIngredients} value={'Get Ingredients'} />
       <Button onPress={checkSandwich} value={'Check if sandwich'} />
+      <p>
+        <div>{ ingredients[0] ? ingredients[0].name : '' }</div>
+      </p>
     </div>
   ));

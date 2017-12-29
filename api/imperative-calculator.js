@@ -69,6 +69,10 @@ const calculateRanking = (generatorContents) => {
                     }
                 }
             }
+
+            // I think we should check the ingredient type and include some logic into our calculation. 
+            // For example, what if they don't include any containers?
+
             console.log('total', total);
             const isSandwich = total > 800 ? true : false;
             console.log(isSandwich? '~~A SANDWICH~~' : '~~NOT A SANDWICH~~');
