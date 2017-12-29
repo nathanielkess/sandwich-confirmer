@@ -31,14 +31,6 @@ app.get('/rankings', (req, res) => {
      .then((result) => res.send(result));
 });
 
-// app.get('/calculations', (req, res) => {
-//     const pureSandwich = [1, 8, 10, 19, 26, 27];
-//     imperative.calculateRanking(pureSandwich)
-//      .then((result) => {
-//         res.json(result);
-//      })
-// });
-
 app.post('/sandwichgenerator', (req, res) => {
     const contents = req.body;
     imperative.calculateRanking(contents)
