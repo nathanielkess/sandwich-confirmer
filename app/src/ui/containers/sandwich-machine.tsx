@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Button } from './../components/Button';
-import { getIngredients } from './../../state/ingredients/ingredients.actions';
-import { checkIfSandwich } from './../../state/ingredients/ingredients.actions';
+import { onIngredientsRequest } from './../../state/ingredients/ingredients.actions';
+import { onCheckIfSandwich } from './../../state/ingredients/ingredients.actions';
 
 export const SandwichMachine = connect(
   (state: any) => ({
@@ -10,8 +10,8 @@ export const SandwichMachine = connect(
     isSandwich: state.sandwichMachine.isSandwich
   }), 
   {
-    requestIngredients: getIngredients,
-    checkSandwich: checkIfSandwich
+    requestIngredients: onIngredientsRequest,
+    checkSandwich: onCheckIfSandwich
   },
   )(({ requestIngredients, checkSandwich, ingredients, isSandwich }) => (
     <div>
