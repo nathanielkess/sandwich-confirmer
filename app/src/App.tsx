@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import { Counter } from './ui/containers/counter';
+import { SandwichMachine } from './ui/containers/sandwich-machine';
 
 const logo = require('./logo.svg');
 
@@ -12,10 +12,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <Counter />
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <SandwichMachine />
       </div>
     );
   }
